@@ -15,7 +15,7 @@ GAME RULES:
 
 // textContent inserisce il testo assegnato all`interno di un html esistente mentre innerHTML inserisce anche del odice html
 // document.querySelector(`#current-` + activePlayer).textContent = dice;
-import './style.css';
-import './index.html';
+import './4-DOM-pig-game/starter/style.css';
+import './4-DOM-pig-game/starter/index.html';
 import { tutto } from './4-DOM-pig-game/starter/app.js';
 tutto();
