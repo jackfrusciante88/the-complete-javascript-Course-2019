@@ -15,48 +15,56 @@ GAME RULES:
 
 // textContent inserisce il testo assegnato all`interno di un html esistente mentre innerHTML inserisce anche del odice html
 // document.querySelector(`#current-` + activePlayer).textContent = dice;
-let score = [], roundScore, activePlayer;
 
-init();
+export function tutto(){
+  import './style.css';
+  import './index.html';
+  let score = [], roundScore, activePlayer;
+  let image = 'https://raw.githubusercontent.com/jackfrusciante88/course2019js/master/dice-';
 
-document.querySelector(`.btn-roll`).addEventListener(`click`, function(){
+  init();
 
-    let dice = Math.ceil(Math.random()*6);
+  document.querySelector(`.btn-roll`).addEventListener(`click`, function(){
 
-    let diceDom = document.querySelector(`.dice`);
-    diceDom.src = "dice-"+dice+".png";
-    diceDom.style.display = `block`;
+      let dice = Math.ceil(Math.random()*6);
 
-    if(dice !== 1){
-        roundScore += dice;
-        document.querySelector(`#current-`+activePlayer).textContent = roundScore;
-        document.querySelector(`.btn-hold`).style.display = `block`;
-    }
-    else{
-        nextPlayer();
-    }
-});
+      let diceDom = document.querySelector(`.dice`);
+      diceDom.src = image+dice+".png";
+      diceDom.style.display = `block`;
 
-document.querySelector(`.btn-hold`).addEventListener(`click`,function(){
-    //add current sclore to global score
-    score[activePlayer] += roundScore;
-    document.querySelector(`#score-`+activePlayer).textContent = score[activePlayer];
-// check the winner
-    if(score[activePlayer] >= 20){
-        document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');
-        document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
-        document.getElementById("name-"+activePlayer).textContent= "WINNER!";
-        document.querySelector(`.btn-hold`).style.display = `none`;
-        document.querySelector(`.dice`).style.display = `none`;
-        // document.querySelector(`.btn-hold`).style.display = `none`;
-        // document.querySelector(`.dice`).style.display = `none`;
-        // document.querySelector(`.btn-roll`).style.display = `none`;
-    }
-    //reset match score
-    else nextPlayer();
-});
+      if(dice !== 1){
+          roundScore += dice;
+          document.querySelector(`#current-`+activePlayer).textContent = roundScore;
+          document.querySelector(`.btn-hold`).style.display = `block`;
+      }
+      else{
+          nextPlayer();
+      }
+  });
 
-document.querySelector('.btn-new').addEventListener('click',init);
+  document.querySelector(`.btn-hold`).addEventListener(`click`,function(){
+      //add current sclore to global score
+      score[activePlayer] += roundScore;
+      document.querySelector(`#score-`+activePlayer).textContent = score[activePlayer];
+  // check the winner
+      if(score[activePlayer] >= 20){
+          document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');
+          document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
+          document.getElementById("name-"+activePlayer).textContent= "WINNER!";
+          document.querySelector(`.btn-hold`).style.display = `none`;
+          document.querySelector(`.dice`).style.display = `none`;
+          // document.querySelector(`.btn-hold`).style.display = `none`;
+          // document.querySelector(`.dice`).style.display = `none`;
+          // document.querySelector(`.btn-roll`).style.display = `none`;
+      }
+      //reset match score
+      else nextPlayer();
+  });
+
+  document.querySelector('.btn-new').addEventListener('click',init);
+}
+
+
 
 function nextPlayer(){
     roundScore =0;
