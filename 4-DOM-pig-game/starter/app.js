@@ -17,8 +17,9 @@ GAME RULES:
 // document.querySelector(`#current-` + activePlayer).textContent = dice;
 
 export function tutto(){
-  import './style.css';
-  import './index.html';
+}
+  // import './style.css';
+  // import './index.html';
   let score = [], roundScore, activePlayer;
   let image = 'https://raw.githubusercontent.com/jackfrusciante88/course2019js/master/dice-';
 
@@ -63,7 +64,6 @@ export function tutto(){
 
   document.querySelector('.btn-new').addEventListener('click',init);
 }
-
 
 
 function nextPlayer(){
