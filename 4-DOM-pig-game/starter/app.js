@@ -63,7 +63,7 @@ export function tutto(){
   });
 
   document.querySelector('.btn-new').addEventListener('click',init);
-}
+
 
 
 function nextPlayer(){
