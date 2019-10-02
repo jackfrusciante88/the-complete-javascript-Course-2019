@@ -10,13 +10,14 @@ Change the game to follow these rules:
 export function tutto(){
 };
 
-let score = [], roundScore = [], activePlayer, activeMatch = false, goal = 100;
+let score = [], roundScore, activePlayer, activeMatch = false, goal = 100, previous = false;
 let image = 'https://raw.githubusercontent.com/jackfrusciante88/course2019js/master/dice-';
+init();
 
 function init(){
     goal = prompt("Please set here your score", "100");
     score = [0,0];
-    roundScore = [0,0];
+    roundScore = 0;
     activePlayer = 0;
     document.querySelectorAll(`.dice`).forEach(function(element){element.style.display = `none`});
     document.querySelector(`.btn-hold`).style.display = `none`;
@@ -35,6 +36,7 @@ function init(){
 }
 
 function nextPlayer(){
+    previous = false;
     roundScore =[0,0];
     document.querySelector(`#current-`+activePlayer).textContent = 0;
     activePlayer  === 0 ? activePlayer = 1 : activePlayer = 0;
@@ -48,17 +50,32 @@ function roll(){
   if(activeMatch){
     let dice = [Math.ceil(Math.random()*6),Math.ceil(Math.random()*6)];
     document.querySelectorAll(`.dice`).forEach(function(e){e.style.display = `block`});
-    document.querySelectorAll(`.dice`).forEach(function(element,index){element.src = image+dice[0]+".png";});
-    if(dice[0] !== 1 && dice[1] !== 1 ){
+    document.querySelectorAll(`.dice`).forEach(function(element,index){element.src = image+dice[index]+".png";});
 
+    if(rule(dice)){
+      //fai cose
     }
-
+    else{
+      //passsa il turno
+    }
 
   }
 
 };
 
+function rule(array){
+if(array[0] === 1 || array[1] === 1 ){
+      return false;      
+    }
+else if(array [0] === 6 || [1] === 6){
+  if(previous){
+    return false;  }
+  else{
+    previous = true;
+    return true;  }
+  }
 
+}
 
 function hold(){
 
