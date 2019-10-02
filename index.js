@@ -17,5 +17,5 @@ GAME RULES:
 // document.querySelector(`#current-` + activePlayer).textContent = dice;
 import './4-DOM-pig-game/starter/style.css';
 import './4-DOM-pig-game/starter/index.html';
-import { tutto } from './4-DOM-pig-game/starter/app.js';
+import { tutto } from './4-DOM-pig-game/starter/challenge.js';
 tutto();

@@ -10,7 +10,7 @@ Change the game to follow these rules:
 export function tutto(){
 };
 
-let score = [], roundScore = [], activePlayer, activeMatch = false;
+let score = [], roundScore = [], activePlayer, activeMatch = false, goal;
 let image = 'https://raw.githubusercontent.com/jackfrusciante88/course2019js/master/dice-';
 
 function init(){
@@ -36,9 +36,25 @@ function init(){
 document.querySelector('.btn-new').addEventListener('click',init);
 
 document.querySelector('.btn-roll').addEventListener('click',function(){
+let x = document.querySelector('.input-score').value;
+  
+  console.log(x);
+  
   if(activeMatch){
     let dice = Math.ceil(Math.random()*6);
 
 
   }
 });
+
+document.querySelector(".forminput").addEventListener("submit", e => {
+  console.log(e);
+  e.preventDefault();
+  let path = document.querySelector(".input-score")
+  goal = path.value;
+  console.log(goal);
+  path.value = "";
+});
+
+  
+
