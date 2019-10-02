@@ -33,7 +33,7 @@ function init(){
     document.querySelector('.player-1-panel').classList.remove('active');
     document.querySelector('.player-0-panel').classList.add('active');
     activeMatch = true;
-}
+};
 
 function nextPlayer(){
     previous = false;
@@ -44,7 +44,7 @@ function nextPlayer(){
     document.querySelectorAll(`.dice`).forEach(function(e){e.style.display = `none`});
     document.querySelector(`.player-0-panel`).classList.toggle(`active`);
     document.querySelector(`.player-1-panel`).classList.toggle(`active`);
-}
+};
 
 function roll(){
   if(activeMatch){
@@ -53,14 +53,18 @@ function roll(){
     document.querySelectorAll(`.dice`).forEach(function(element,index){element.src = image+dice[index]+".png";});
 
     if(rule(dice)){
-      //fai cose
+      //fai cos
     }
     else{
       //passsa il turno
     }
-
   }
+};
 
+function hold(){
+  //controlla se ha vinto
+  //aggionra score 
+  // passa il turno
 };
 
 function rule(array){
@@ -74,10 +78,6 @@ else if(array [0] === 6 || [1] === 6){
     previous = true;
     return true;  }
   }
-
-}
-
-function hold(){
 
 };
 
