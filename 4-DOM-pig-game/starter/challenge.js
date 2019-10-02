@@ -47,6 +47,11 @@ function nextPlayer(){
 function roll(){
   if(activeMatch){
     let dice = [Math.ceil(Math.random()*6),Math.ceil(Math.random()*6)];
+    document.querySelectorAll(`.dice`).forEach(function(e){e.style.display = `block`});
+    document.querySelectorAll(`.dice`).forEach(function(element,index){element.src = image+dice[0]+".png";});
+    if(dice[0] !== 1 && dice[1] !== 1 ){
+
+    }
 
 
   }
