@@ -73,12 +73,15 @@ if(array[0] === 1 || array[1] === 1 ){
     }
 else if(array [0] === 6 || [1] === 6){
   if(previous){
+    score [activePlayer]
     return false;  }
   else{
     previous = true;
     return true;  }
   }
-
+else {
+  previous = false;
+  return true};
 };
 
 
