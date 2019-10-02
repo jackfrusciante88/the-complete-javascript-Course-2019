@@ -10,14 +10,15 @@ Change the game to follow these rules:
 export function tutto(){
 };
 
-let score = [], roundScore = [], activePlayer, activeMatch = false, goal;
+let score = [], roundScore = [], activePlayer, activeMatch = false, goal = 100;
 let image = 'https://raw.githubusercontent.com/jackfrusciante88/course2019js/master/dice-';
 
 function init(){
+    goal = prompt("Please set here your score", "100");
     score = [0,0];
     roundScore = [0,0];
     activePlayer = 0;
-    document.querySelector(`.dice`).style.display = `none`;
+    document.querySelectorAll(`.dice`).forEach(function(element){element.style.display = `none`});
     document.querySelector(`.btn-hold`).style.display = `none`;
     document.getElementById(`score-0`).textContent = `0`;
     document.getElementById(`score-1`).textContent = `0`;
@@ -33,28 +34,41 @@ function init(){
     activeMatch = true;
 }
 
-document.querySelector('.btn-new').addEventListener('click',init);
+function nextPlayer(){
+    roundScore =[0,0];
+    document.querySelector(`#current-`+activePlayer).textContent = 0;
+    activePlayer  === 0 ? activePlayer = 1 : activePlayer = 0;
+    document.querySelector(`.btn-hold`).style.display = `none`;
+    document.querySelectorAll(`.dice`).forEach(function(e){e.style.display = `none`});
+    document.querySelector(`.player-0-panel`).classList.toggle(`active`);
+    document.querySelector(`.player-1-panel`).classList.toggle(`active`);
+}
 
-document.querySelector('.btn-roll').addEventListener('click',function(){
-let x = document.querySelector('.input-score').value;
-  
-  console.log(x);
-  
+function roll(){
   if(activeMatch){
-    let dice = Math.ceil(Math.random()*6);
+    let dice = [Math.ceil(Math.random()*6),Math.ceil(Math.random()*6)];
 
 
   }
-});
 
-document.querySelector(".forminput").addEventListener("submit", e => {
-  console.log(e);
-  e.preventDefault();
-  let path = document.querySelector(".input-score")
-  goal = path.value;
-  console.log(goal);
-  path.value = "";
-});
+};
 
-  
 
+
+function hold(){
+
+};
+
+
+document.querySelector('.btn-new').addEventListener('click',init);
+document.querySelector('.btn-roll').addEventListener('click',roll);
+document.querySelector('.btn-hold').addEventListener('click',hold);
+
+// document.querySelector(".forminput").addEventListener("submit", e => {
+//   console.log(e);
+//   e.preventDefault();
+//   let path = document.querySelector(".input-score")
+//   goal = path.value;
+//   console.log(goal);
+//   path.value = "";
+// });
