@@ -15,7 +15,10 @@ let image = 'https://raw.githubusercontent.com/jackfrusciante88/course2019js/mas
 init();
 
 function init(){
-    goal = prompt("Please set here your score", "100");
+    let input = document.querySelector(".input-score").value;
+    if(input) goal = input;
+
+    // goal = prompt("Please set here your score", "100");
     score = [0,0];
     roundScore = 0;
     activePlayer = 0;

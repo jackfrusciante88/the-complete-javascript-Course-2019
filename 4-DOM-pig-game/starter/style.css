@@ -158,3 +158,18 @@ i {
 }
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+.input-score{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 520px;
+  color: #555;
+  font-size: 18px;
+  text-align: center;
+  font-family: 'Lato';
+  padding: 10px;
+  width: 160px;
+  text-transform: uppercase;
+
+}
