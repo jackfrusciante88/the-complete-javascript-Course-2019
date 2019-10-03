@@ -49,20 +49,17 @@ function nextPlayer(){
 function roll(){
   if(activeMatch){
     let dice = [Math.ceil(Math.random()*6),Math.ceil(Math.random()*6)];
+    roundScore = roundScore + dice[0] + dice [1];
     document.querySelectorAll(`.dice`).forEach(function(e){e.style.display = `block`});
     document.querySelectorAll(`.dice`).forEach(function(element,index){element.src = image+dice[index]+".png";});
 
     if(rule(dice)){
       //fai cos
-      roundScore = roundScore + dice[0] + dice [1];
-      console.log(roundScore);
       document.querySelector('#current-'+activePlayer).textContent = roundScore;
       document.querySelector('.btn-hold').style.display = 'block';
     }
-    else{
-      //passsa il turno
+    else{//passsa il turno
       nextPlayer();
-      document.querySelector('.btn-hold').style.display = 'none';
     }
   }
 };
