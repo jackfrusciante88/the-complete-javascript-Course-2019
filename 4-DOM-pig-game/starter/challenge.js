@@ -37,7 +37,7 @@ function init(){
 
 function nextPlayer(){
     previous = false;
-    roundScore =[0,0];
+    roundScore =0;
     document.querySelector(`#current-`+activePlayer).textContent = 0;
     activePlayer  === 0 ? activePlayer = 1 : activePlayer = 0;
     document.querySelector(`.btn-hold`).style.display = `none`;
@@ -54,17 +54,40 @@ function roll(){
 
     if(rule(dice)){
       //fai cos
+      roundScore = roundScore + dice[0] + dice [1];
+      console.log(roundScore);
+      document.querySelector('#current-'+activePlayer).textContent = roundScore;
+      document.querySelector('.btn-hold').style.display = 'block';
     }
     else{
       //passsa il turno
+      nextPlayer();
+      document.querySelector('.btn-hold').style.display = 'none';
     }
   }
 };
 
 function hold(){
-  //controlla se ha vinto
-  //aggionra score 
-  // passa il turno
+  if(activeMatch){
+  //aggionra score
+  score[activePlayer] += roundScore;
+  document.querySelector('#score-'+activePlayer).textContent = score[activePlayer];
+    //controlla se ha vinto
+    if(score[activePlayer]< goal){
+      // passa il turno
+      nextPlayer();
+    }
+    else{
+      activeMatch = false;
+      document.querySelector('.player-'+activePlayer+'-panel').classList.add('winner');
+      document.querySelector('.player-'+activePlayer+'-panel').classList.remove('active');
+      document.querySelector('#name-'+activePlayer).textContent= "WINNER!";
+      document.querySelector('.btn-hold').style.display = 'none';
+      document.querySelector('.dice').style.display = 'none'; 
+    };
+    
+
+  };
 };
 
 function rule(array){
@@ -73,7 +96,8 @@ if(array[0] === 1 || array[1] === 1 ){
     }
 else if(array [0] === 6 || [1] === 6){
   if(previous){
-    score [activePlayer]
+    score [activePlayer] = 0;
+    document.querySelector('#score-'+activePlayer).textContent = 0;
     return false;  }
   else{
     previous = true;
