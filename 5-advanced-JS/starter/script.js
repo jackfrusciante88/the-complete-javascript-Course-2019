@@ -1,5 +1,5 @@
-export function tutto (){  
-}
+// export function tutto (){  
+// }
 
 
 // Lecture: Function constructor
@@ -35,7 +35,7 @@ console.log(mark.lastName);
 */
 
 //object.create
-
+/*
 var personProto = {
   calculateAge: function (){
     console.log(2019 - this.yearOfBirth);
@@ -54,3 +54,71 @@ var jane = Object.create(personProto,{
   yearOfBirth: { value: 1969},
   job: { value: 'streetworker'}
 });
+*/
+
+
+// Lecture: Functions returning functions
+/*
+function interviewQuestion(job) {
+    if (job === 'designer') {
+        return function(name) {
+            console.log(name + ', can you please explain what UX design is?');
+        }
+    } else if (job === 'teacher') {
+        return function(name) {
+            console.log('What subject do you teach, ' + name + '?');
+        }
+    } else {
+        return function(name) {
+            console.log('Hello ' + name + ', what do you do?');
+        }
+    }
+}
+
+var teacherQuestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+
+
+teacherQuestion('John');
+designerQuestion('John');
+designerQuestion('jane');
+designerQuestion('Mark');
+designerQuestion('Mike');
+
+interviewQuestion('teacher')('Mark');
+*/
+
+//Closures
+/*
+function interview(job,question){
+  let statement = 'if you are a '+job+', '+question;
+  return function (name){
+    console.log('Hello '+name+', '+statement);
+  }
+}
+
+let funMinatore = interview('minatore','what color carbon is?');
+let funTeacher = interview('teacher','when they discover America?');
+let funPlayer = interview('Player','how long is a football field?');
+
+funMinatore('Karol');
+funMinatore('George');
+funTeacher('Gervasio');
+*/
+//dal corso
+/*
+function interview(job) {
+  return function(name) {
+    if (job === 'designer') {
+          console.log(name + ', can you please explain what UX design is?');      
+    } else if (job === 'teacher') {
+            console.log('What subject do you teach, ' + name + '?');
+    } else {
+            console.log('Hello ' + name + ', what do you do?');
+    }
+
+  }
+}
+
+interview('teacher')('John');
+*/
