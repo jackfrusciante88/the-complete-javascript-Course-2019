@@ -122,3 +122,47 @@ function interview(job) {
 
 interview('teacher')('John');
 */
+
+
+
+//CHALLENGE 
+
+
+function Question (q,a,c){
+  this.question = q;
+  this.answer = a;
+  this.correct = c;
+}
+
+Question.prototype.show = function(){
+  console.log(this.question);
+  this.answer.forEach(function(el,index) {
+    console.log(index+': '+el)    
+  });
+}
+
+
+var questions = [];
+
+questions.push(new Question('come ti chiami?',['Mattia','Paolo','Alberto'],0));
+questions.push(new Question('quanti anni hai?',['21','35','31'],2));
+questions.push(new Question('di che colore era il cavallo bianco di napoleone?',['Bianco','nero'],0));
+questions.push(new Question('dove vivi',['Katowice','L`Aquila,','Roma','Krakow'],3));
+
+
+
+
+function Rdn(){
+  let n = Math.floor(Math.random()*questions.length);
+  questions[n].show();
+  let answer = prompt(`inserisci il numero della risposta corretta`,'numero');
+  if (answer == questions[n].correct){
+    console.log('Risposta esatta')
+  }
+  else{
+    console.log('risposta errata');
+  }
+
+}
+
+Rdn()
