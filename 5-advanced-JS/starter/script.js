@@ -171,20 +171,20 @@ Rdn()
 
 //IIFE
 
-function Question (q,a,c){
-  this.question = q;
-  this.answer = a;
-  this.correct = c;
-}
-
-Question.prototype.show = function(){
-  console.log(this.question);
-  this.answer.forEach(function(el,index) {
-    console.log(index+': '+el)    
-  });
-}
-
 ( function (){
+  function Question (q,a,c){
+    this.question = q;
+    this.answer = a;
+    this.correct = c;
+  };
+  
+  Question.prototype.show = function(){
+    console.log(this.question);
+    this.answer.forEach(function(el,index) {
+      console.log(index+': '+el)    
+    });
+  };
+
   var questions = [];
   questions.push(new Question('come ti chiami?',['Mattia','Paolo','Alberto'],0));
   questions.push(new Question('quanti anni hai?',['21','35','31'],2));
@@ -200,8 +200,5 @@ Question.prototype.show = function(){
   else{
     console.log('risposta errata');
   }
-
-  
-
-    
+ 
 })();
