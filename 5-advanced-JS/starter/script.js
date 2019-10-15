@@ -241,15 +241,17 @@ Rdn()
     });
   }
 
-  Question.prototype.check = function(ans){
+  Question.prototype.check = function(ans, fn){
+  let points;
     if (ans === questions[n].correct){
       console.log('Risposta esatta');
-      totalScore (true);
+      points = fn (true);
     }
     else{
       console.log('risposta errata');
+      points = fn (false);
     }
-    questions[n].pointsDisplay(totalScore);
+    this.pointsDisplay(points);
   }
 
   Question.prototype.pointsDisplay = function (tot){
@@ -273,10 +275,9 @@ Rdn()
   
     let answer = prompt(`inserisci il numero della risposta corretta`,'numero');
     if (answer !== 'exit'){
-      questions[n].check(parseInt(answer));
+      questions[n].check(parseInt(answer), totalScore);
       nextQuestion();
-    }
-    
+    }    
   }
   let totalScore = score();
 
