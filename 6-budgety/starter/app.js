@@ -1,7 +1,7 @@
 export function tutto (){
 
 }
-
+console.log('inizio');
 var budgetController = (function(){
 
   //insriamo il codice del modulo budget budgetController
@@ -17,3 +17,5 @@ var budgetController = (function(){
   }
 
 })()
+
+console.log('fine');
