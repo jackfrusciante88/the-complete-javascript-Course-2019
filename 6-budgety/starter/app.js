@@ -271,7 +271,9 @@ var UIController = (function(){
                 DOMstrings.inputValue );
             fields.forEach(function(el){
                 el.classList.toggle('red-focus');
-            })      
+            });
+            
+            document.querySelector(DOMstrings.inputBtn).classList.toggle('red'); 
 
 
         },
