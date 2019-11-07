@@ -193,7 +193,7 @@ var UIController = (function(){
             //replace the placeholder text with real data 
             newHtml = html.replace('%id%',obj.id);
             newHtml = newHtml.replace('%description%',obj.description);
-            newHtml = newHtml.replace('%value%',formatNumber(obj.value, type));
+            newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
 
             //insert html in DOM
             document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
@@ -210,6 +210,8 @@ var UIController = (function(){
             fieldsArr[0].focus();
 
         },
+
+
 
         getDOMstrings : function(){
             return DOMstrings;
