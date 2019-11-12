@@ -1,3 +1,4 @@
+export function tutto(){};
 /////////////////////////////////
 // Lecture: let and const
 
@@ -369,7 +370,7 @@ Array.from(all).forEach(cur => cur.style.color = 'purple');
 /////////////////////////////////
 // Lecture: Rest parameters
 
-/*
+
 //ES5
 function isFullAge5() {
     //console.log(arguments);
@@ -413,7 +414,7 @@ function isFullAge6(limit, ...years) {
 }
 
 isFullAge6(16, 1990, 1999, 1965, 2016, 1987);
-*/
+
 
 
 
