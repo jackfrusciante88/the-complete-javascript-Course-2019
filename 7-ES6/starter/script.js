@@ -131,9 +131,21 @@ class elem {
 };
 
 class park extends elem{
-    constructor(name, area, nTrees, year){
+    constructor(name, year, area, nTrees){
         super(id, name, year);
-        this. nTrees = nTrees;
+        this.nTrees = nTrees;
         this.area = area;
+        density = function(){
+            this.nTrees/this.area;
+        }
     }
 }
+
+class street extends elem{
+    constructor(name, year){
+        super(id, name, year, length, size ='normal');
+        this.length = length;
+        this.size = size;
+    }
+}
+console.log(`la citta ha ${var o method} ancora bla bla bla`);
