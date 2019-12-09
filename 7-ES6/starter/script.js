@@ -154,6 +154,7 @@ class street extends elem{
 let data = {
     parks : [],
     streets: [],
+
     setParks : function(name,year,area,nTrees){
         this.parks.push(new park(name,year,area,nTrees) )
     },
@@ -162,8 +163,8 @@ let data = {
     },
 
     getParks : ()=> {
-      console.log(this.data.parks)
-
+console.log( data.parks );
+//      return this.parks;
     },
 
 
@@ -179,6 +180,6 @@ let data = {
 
 
 data.setParks('sibillini','1996',254,1500)
- console.log( data.getParks());
+console.log( data.getParks() );
 
 // console.log(`la citta ha ${var o method} ancora bla bla bla`);
