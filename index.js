@@ -27,5 +27,6 @@ GAME RULES:
 // import { tutto } from './5-advanced-JS/starter/script.js';
 // tutto();
 
-import { tutto } from './7-ES6/final/script.js';
+import { tutto } from './7-ES6/starter/script.js';
 tutto();
+

@@ -1,3 +1,4 @@
+export function tutto(){};
 // es5
 /*
 var name5 = 'Jane Smith';
@@ -132,19 +133,19 @@ class elem {
 
 class park extends elem{
     constructor(name, year, area, nTrees){
-        super(id, name, year);
+        super(name, year);
         this.nTrees = nTrees;
         this.area = area;
-        density = function(){
-            this.nTrees/this.area;
+        // density = function(){
+        //     this.nTrees/this.area;
         
-        }
+        // }
     }
 };
 
 class street extends elem{
     constructor(name, year, length, size ='normal'){
-        super(id, name, year);
+        super(name, year);
         this.length = length;
         this.size = size;
     }
@@ -154,20 +155,30 @@ let data = {
     parks : [],
     streets: [],
     setParks : function(name,year,area,nTrees){
-        parks.push(new park(name,year,area,nTrees) )
+        this.parks.push(new park(name,year,area,nTrees) )
     },
     setStreets : function(id, name, year, length, size){
-        streets.push(new street(id, name, year, length, size) )
+        this.streets.push(new street(id, name, year, length, size) )
     },
-    avgPark : function(){
-        let avg;
-        for (let i = 0 ; parks.length ; i++){
-            avg += parks[i].year;
+
+    getParks : ()=> {
+      console.log(this.data.parks)
+
+    },
+
+
+    avgPark : ()=>{
+        let avg = 0;
+        for (let i = 0 ; this.parks.length ; i++){
+            avg += this.parks[i].year;
         };
-        return avg/parks.length;
-    }
+        return avg/this.parks.length;
+    },
 
 }
 
+
 data.setParks('sibillini','1996',254,1500)
+ console.log( data.getParks());
+
 // console.log(`la citta ha ${var o method} ancora bla bla bla`);
