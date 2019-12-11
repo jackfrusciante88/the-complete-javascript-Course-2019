@@ -1,4 +1,4 @@
-//export function tutto(){};
+export function tutto(){};
 // es5
 /*
 var name5 = 'Jane Smith';
@@ -111,7 +111,7 @@ Suppose that you're working in a small town administration, and you're in charge
 It's a very small town, so right now there are only 3 parks and 4 streets. All parks and streets have a name and a build year.
 
 At an end-of-year meeting, your boss wants a final report with the following:
-1.  Tree density of each park in the town (forumla: number of trees/park area)
+1.  Tree density of each park in the town (formula: number of trees/park area)
 2. Average age of each town's park (formula: sum of all ages/number of parks)
 3. The name of the park that has more than 1000 trees
 4. Total and average length of the town's streets
@@ -123,7 +123,7 @@ HINT: Use some of the ES6 features: classes, subclasses, template strings, defau
 */
 
 
-class elem {
+class Elem {
     constructor(name, year){
         this.id = new Date().valueOf();
         this.name = name;
@@ -131,19 +131,22 @@ class elem {
     }
 };
 
-class park extends elem{
+class Park extends Elem{
     constructor(name, year, area, nTrees){
-        super(name, year);
-        this.nTrees = nTrees;
-        this.area = area;
-        // density = function(){
-        //     this.nTrees/this.area;
-        
-        // }
+      super(name, year);
+      this.nTrees = nTrees;
+      this.area = area;
+    }    
+    density (){
+      this.nTrees/this.area;
     }
+    more1000(){      
+      if(this.nTreees > 1000)
+        return true;
+    } 
 };
 
-class street extends elem{
+class Street extends Elem{
     constructor(name, year, length, size ='normal'){
         super(name, year);
         this.length = length;
@@ -157,19 +160,19 @@ let data = {
     test : [56,'adad'],
 
     setParks : function(name,year,area,nTrees){
-        this.parks.push(new park(name,year,area,nTrees) )
+        this.parks.push(new Park(name,year,area,nTrees) )
     },
     setStreets : function(id, name, year, length, size){
-        this.streets.push(new street(id, name, year, length, size) )
+        this.streets.push(new Street(id, name, year, length, size) )
     },
 
-    getParks : function () {
+    getParks() {
 
      return this.parks;
     },
 
 
-    avgPark : function() {
+    avgPark() {
         let avg = 0;
         let date = new Date().getFullYear()
         for (let i = 0 ; i < this.parks.length ; i++){
@@ -178,7 +181,9 @@ let data = {
         return avg/this.parks.length;
     },
 
-    fTest : function() {
+    
+
+    fTest() {
       console.log(this.test.length);
       for (let i = 0 ; i < this.parks.length ; i++){
         console.log(`elemento ${i} e il parco  ${this.parks[i].name}`)
@@ -194,6 +199,6 @@ data.setParks('sibillini','1996',254,1500)
 data.setParks('stelvio','1986',1254,1990)
 
 data.fTest()
-console.log( data.avgPark());
+console.log( data.av());
 
 // console.log(`la citta ha ${var o method} ancora bla bla bla`);
