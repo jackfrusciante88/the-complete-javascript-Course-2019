@@ -138,12 +138,8 @@ class Park extends Elem{
       this.area = area;
     }    
     density (){
-      this.nTrees/this.area;
+      reuthis.nTrees/this.area;
     }
-    more1000(){      
-      if(this.nTreees > 1000)
-        return true;
-    } 
 };
 
 class Street extends Elem{
@@ -157,7 +153,6 @@ class Street extends Elem{
 let data = {
     parks : [],
     streets: [],
-    test : [56,'adad'],
 
     setParks : function(name,year,area,nTrees){
         this.parks.push(new Park(name,year,area,nTrees) )
@@ -167,8 +162,15 @@ let data = {
     },
 
     getParks() {
-
      return this.parks;
+    },
+
+    getStreets() {
+     return this.streets;
+    },
+
+    getDensity(){
+      return this.parks.map( (e)=>`il parco ${e.name} ha una densita di ${e.density()} alberi`)
     },
 
 
@@ -181,8 +183,26 @@ let data = {
         return avg/this.parks.length;
     },
 
-    
+    more1000(){ 
+      return this.parks.filter( (e) => e.nTrees > 1000).map((e)=> e.name)     
+    },
 
+    totStreets(){
+      return this.streets.map( (e)=> e.length).reduce((tot, e)=> tot+e)
+    },
+
+    avgStreets(){
+      return this.totStreets()/this.streets.length
+    },
+
+    report(){
+      console.log(``)
+    }
+
+
+
+    
+/*
     fTest() {
       console.log(this.test.length);
       for (let i = 0 ; i < this.parks.length ; i++){
@@ -190,15 +210,21 @@ let data = {
       }
 
     },
+*/
+
 }
 
 
 
 
-data.setParks('sibillini','1996',254,1500)
-data.setParks('stelvio','1986',1254,1990)
+data.setParks('sibillini','1996',254,1500);
+data.setParks('stelvio','1986',1254,1990);
 
-data.fTest()
-console.log( data.av());
+data.setStreets('via roma','1986',133);
+data.setStreets('via salaria','1913',653,'big');
+data.setStreets('via fortebracci','1998',3,'small');
 
+console.log( data.totStreets());
+console.log( data.avgStreets());
+console.log( data.getDensity());
 // console.log(`la citta ha ${var o method} ancora bla bla bla`);
