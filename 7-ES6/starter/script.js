@@ -176,13 +176,13 @@ let data = {
         this.streets.push(new street(id, name, year, length, size) )
     },
 
-    getParks : ()=> {
+    getParks : function () {
 
      return this.parks;
     },
 
 
-    avgPark : ()=>{
+    avgPark : function() {
         let avg = 0;
         for (let i = 0 ; this.parks.length ; i++){
             avg += this.parks[i].year;
@@ -193,7 +193,7 @@ let data = {
     fTest : function() {
       console.log(this.test.length);
       for (let i = 0 ; this.parks.length ; i++){
-        
+        console.log(`elemento ${i}`)
       }
 
     },
