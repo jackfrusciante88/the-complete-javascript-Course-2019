@@ -141,7 +141,20 @@ class park extends elem{
         
         // }
     }
+
+    // avgPark = ()=>{
+    //     console.log('kjbv')
+    //     let avg = 0;
+    //     for (let i = 0 ; this.parks.length ; i++){
+    //         avg += this.parks[i].year;
+    //     };
+    //     return avg/this.parks.length;
+    // }
 };
+
+// const park2 = new park;
+
+// park2.avgPark()
 
 class street extends elem{
     constructor(name, year, length, size ='normal'){
@@ -154,6 +167,7 @@ class street extends elem{
 let data = {
     parks : [],
     streets: [],
+    test : [56,'adad'],
 
     setParks : function(name,year,area,nTrees){
         this.parks.push(new park(name,year,area,nTrees) )
@@ -163,8 +177,8 @@ let data = {
     },
 
     getParks : ()=> {
-console.log( data.parks );
-//      return this.parks;
+
+     return this.parks;
     },
 
 
@@ -176,10 +190,22 @@ console.log( data.parks );
         return avg/this.parks.length;
     },
 
+    fTest : function() {
+      console.log(this.test.length);
+      for (let i = 0 ; this.parks.length ; i++){
+        
+      }
+
+    },
 }
 
 
+
+
 data.setParks('sibillini','1996',254,1500)
-console.log( data.getParks() );
+data.setParks('stelvio','1986',1254,1990)
+
+data.fTest()
+// console.log( dataavgPark());
 
 // console.log(`la citta ha ${var o method} ancora bla bla bla`);
