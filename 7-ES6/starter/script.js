@@ -138,7 +138,7 @@ class Park extends Elem{
       this.area = area;
     }    
     density (){
-      reuthis.nTrees/this.area;
+      return this.nTrees/this.area;
     }
 };
 
