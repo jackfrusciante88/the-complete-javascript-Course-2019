@@ -9,10 +9,12 @@ console.log(`using imported funtions! ${searchView.add(searchView.ID,5)} sum, ${
 
 // http://forkify-api.herokuapp.com/
 
+/*
+
 import axios from 'axios';
 
 
-/*       ----  with axios implementation    ---  */
+//       ----  with axios implementation    ---  
 
 async function getResults(query){
     try{
@@ -27,7 +29,7 @@ async function getResults(query){
     }
 }
 
-/*       ----  with fetch implementation    ---  */
+//        ----  with fetch implementation    ---  
 function getResultsF(query) {
     fetch(`https://forkify-api.herokuapp.com/api/search?q=${query}`)
     .then(result => {
@@ -38,7 +40,7 @@ function getResultsF(query) {
     })
 }
 
-/*       ----  with async try catch fetch implementation    ---  */
+//        ----  with async try catch fetch implementation    ---  
 async function getResultsT(query) {
     try{
         const result = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${query}`);
@@ -50,7 +52,7 @@ async function getResultsT(query) {
     }
 }
 
-/*       ----  with async try catch fetch implementation    ---  */
+//        ----  with async try catch fetch implementation    ---  
 async function getResultsA(query) {
         const result = await fetch(`https://forkify-api.herokuapp.com/api/search?q=${query}`);
         const data = await result.json();
@@ -60,3 +62,41 @@ async function getResultsA(query) {
 
 getResults('pasta');
 // getResultsA('pizzas');
+
+*/
+
+import Search from './models/Search'
+
+/** global state of the app
+ * serach object
+ * current recipe object
+ * shopping list object
+ * liked recipe
+ */
+const state ={};
+
+const controlSearch = async() =>{
+    //get query from the view
+    const query= 'pizza' //todo
+    if (query) {
+        // 2 new search object and add to state
+        state.search = new Search(query);
+        //3 prepare ui foe results
+
+        //4 search recipes
+        await state.search.getResults();
+
+        //5 render the results on ui
+        console.log
+    }
+}
+
+document.querySelector('.search').addEventListener('submit', e =>{
+    e.preventDefault();
+    controlSearch();
+
+})
+
+const search = new Search ('pizza');
+console.log(search);
+search.getResults();
