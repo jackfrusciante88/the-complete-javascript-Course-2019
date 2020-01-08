@@ -79,21 +79,24 @@ const state ={};
 
 const controlSearch = async() =>{
     //get query from the view
-    const query= 'pizza' //todo
+    const query= searchView.getInput();
+    console.log(query);
     if (query) {
         // 2 new search object and add to state
         state.search = new Search(query);
         //3 prepare ui foe results
+        searchView.clearInput();
+        searchView.clearResults();
 
         //4 search recipes
         await state.search.getResults();
 
         //5 render the results on ui
-        console.log(state.search.result)
+        searchView.renderResults(state.search.result)
     }
 }
 
-x.addEventListener('submit', e =>{
+elements.searchForm.addEventListener('submit', e =>{
     e.preventDefault();
     controlSearch();
 
