@@ -1,1 +1,1 @@
-export const getInput = () =
+export const getInput = {}

@@ -93,7 +93,7 @@ const controlSearch = async() =>{
     }
 }
 
-.addEventListener('submit', e =>{
+x.addEventListener('submit', e =>{
     e.preventDefault();
     controlSearch();
 
