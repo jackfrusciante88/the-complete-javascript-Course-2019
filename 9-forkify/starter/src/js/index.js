@@ -65,7 +65,9 @@ getResults('pasta');
 
 */
 
-import Search from './models/Search'
+import Search from './models/Search';
+import * as searchView from './views/searchView';
+import { elements} from './views/base';
 
 /** global state of the app
  * serach object
@@ -87,16 +89,16 @@ const controlSearch = async() =>{
         await state.search.getResults();
 
         //5 render the results on ui
-        console.log
+        console.log(state.search.result)
     }
 }
 
-document.querySelector('.search').addEventListener('submit', e =>{
+.addEventListener('submit', e =>{
     e.preventDefault();
     controlSearch();
 
 })
 
 const search = new Search ('pizza');
-console.log(search);
+// console.log(search);
 search.getResults();
