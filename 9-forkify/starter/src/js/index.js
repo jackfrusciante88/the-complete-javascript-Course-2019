@@ -67,7 +67,7 @@ getResults('pasta');
 
 import Search from './models/Search';
 import * as searchView from './views/searchView';
-import { elements} from './views/base';
+import { elements, renderLoader, clearLoader} from './views/base';
 
 /** global state of the app
  * serach object
@@ -87,21 +87,28 @@ const controlSearch = async() =>{
         //3 prepare ui foe results
         searchView.clearInput();
         searchView.clearResults();
+        renderLoader(elements.searchRes);
 
         //4 search recipes
         await state.search.getResults();
 
         //5 render the results on ui
+        clearLoader();
         searchView.renderResults(state.search.result)
     }
-}
+};
 
 elements.searchForm.addEventListener('submit', e =>{
     e.preventDefault();
     controlSearch();
 
-})
+});
 
-const search = new Search ('pizza');
-// console.log(search);
-search.getResults();
+elements.searchResPages.addEventListener('click', e =>{
+    const btn = e.target.closest('.btn-inline');
+    if(btn){
+        const goToPage = parseInt(btn.dataset.goto, 10);
+        searchView.clearResults();
+        searchView.renderResults(state.search.result, goToPage)
+    }
+})
