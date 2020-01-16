@@ -109,8 +109,10 @@ const controlSearch = async() =>{
 elements.searchForm.addEventListener('submit', e =>{
     e.preventDefault();
     controlSearch();
-
 });
+
+
+
 
 elements.searchResPages.addEventListener('click', e =>{
     const btn = e.target.closest('.btn-inline');
@@ -133,8 +135,10 @@ const controlRecipe = async () => {
         state.recipe =  new Recipe(id);
 
         try {
-            //get the recipe data
+            //get the recipe data and pars eingredients
             await state.recipe.getRecipe();
+            //error in parse ingredients to debug
+            state.recipe.parseIngredients();
 
             //calcualte serving and time
             state.recipe.calcTime();
@@ -144,7 +148,7 @@ const controlRecipe = async () => {
             //render the recipe
             console.log(state.recipe)
         } catch (err) {
-            alert('error processing recipe!')
+            alert('error processing recipe!'+err)
         }
 
 
