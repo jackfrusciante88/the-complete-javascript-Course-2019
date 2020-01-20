@@ -68,6 +68,7 @@ getResults('pasta');
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import { elements, renderLoader, clearLoader} from './views/base';
 
 /** global state of the app
@@ -101,7 +102,7 @@ const controlSearch = async() =>{
             searchView.renderResults(state.search.result);
 
         } catch (err){
-            alert('something went wrong with the search')
+            alert('something went wrong with the search '+err)
         }
     }
 };
@@ -148,7 +149,7 @@ const controlRecipe = async () => {
             //render the recipe
             console.log(state.recipe)
         } catch (err) {
-            alert('error processing recipe!'+err)
+            alert('error processing recipe! '+err)
         }
 
 
