@@ -130,7 +130,12 @@ const controlRecipe = async () => {
     const id =window.location.hash.replace('#','')
 
     if(id){
-        //prepare the ui for chanf
+        //prepare the ui for change
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
+
+        //highlight selected item
+        if (state.search) searchView.highlightSelected(id);
 
         //create new recipe object
         state.recipe =  new Recipe(id);
@@ -147,7 +152,8 @@ const controlRecipe = async () => {
 
 
             //render the recipe
-            console.log(state.recipe)
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
         } catch (err) {
             alert('error processing recipe! '+err)
         }
