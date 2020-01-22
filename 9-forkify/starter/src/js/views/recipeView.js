@@ -1,5 +1,5 @@
 import { elements } from "./base";
-import {fraction} from 'fractional';
+import {Fraction} from 'fractional';
 
 const createIngredient = ingredient => `
     <li class="recipe__item">
@@ -21,7 +21,8 @@ const formatCount = (num) => {
         if(!dec) return num;
 
         if (int === 0){
-            const fr = new Fraction(num);
+            //const fr = new Fraction(num);
+            const fr = new Fraction(Math.round(num*10)/10);
             return `${fr.numerator}/${fr.denominator}`;
         }
         else {
@@ -92,7 +93,7 @@ export const renderRecipe = recipe =>{
 
             </ul>
 
-            <button class="btn-small recipe__btn">
+            <button class="btn-small recipe__btn recipe__btn--add">
                 <svg class="search__icon">
                     <use href="img/icons.svg#icon-shopping-cart"></use>
                 </svg>
