@@ -68,10 +68,13 @@ getResults('pasta');
 import Search from './models/Search';
 import Recipe from './models/Recipe';
 import List from './models/List';
+import Likes from './models/Likes';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
 import * as listView from './views/listView';
+import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader} from './views/base';
+
 
 /** global state of the app
  * search object
@@ -158,7 +161,10 @@ const controlRecipe = async () => {
 
             //render the recipe
             clearLoader();
-            recipeView.renderRecipe(state.recipe);
+            recipeView.renderRecipe(
+                state.recipe,
+                state.likes.isLiked(id)
+            );
         } catch (err) {
             alert('error processing recipe! '+err)
         }
@@ -197,10 +203,44 @@ elements.shopping.addEventListener('click', e=>{
     //handle the count update
     }else if  (e.target.matches('.shopping_count-value')){
         const val = parseFloat(e.target.value,10);
-        if(val > 0)  state.list.updateCount(id, val);
+        if(val >= 0)  state.list.updateCount(id, val);
     }
 
 });
+
+/*
+ * LIKES CONTROLLER
+ */
+const controlLike = () => {
+    if(!state.likes) state.likes = new Likes();
+    const currentID = state.recipe.id;
+
+    //user has not yer liked current recipe
+    if(!state.likes.isLiked(currentID)){
+        // add like to the state
+        const newLike = state.likes.addLike(
+            state.recipe.id,
+            state.recipe.title,
+            state.recipe.author,
+            state.recipe.img
+        );
+        ///toggle like button
+        likesView.toggleLikeBtn(true)
+        //add recipe to the ui list
+        console.log(state.likes);
+
+    //user has yet liked current recipe
+    } else {
+        // remove like to the state
+        state.likes.deleteLike(currentID);
+        ///toggle like button
+        likesView.toggleLikeBtn(false)
+
+        //remove recipe to the ui list
+        console.log(state.likes);
+
+    }
+};
 
 
 // handling recipe button increase decrease
@@ -217,6 +257,10 @@ elements.recipe.addEventListener('click', e =>{
         recipeView.updateServingsIngredients(state.recipe);
     } else if (e.target.matches('.recipe__btn--add, .recipe__btn--add *')){
         controlList();
+    } else if (e.target.matches('.recipe__love, .recipe__love *')){
+        // call the like controller
+        controlLike();
+
     }
 });
 
