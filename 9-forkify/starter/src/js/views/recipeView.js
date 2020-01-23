@@ -80,7 +80,7 @@ export const renderRecipe = (recipe, isLiked) =>{
             </div>
             <button class="recipe__love">
                 <svg class="header__likes">
-                    <use href="img/icons.svg#icon-heart-outlined${isLiked ? '':'-outlined'}"></use>
+                    <use href="img/icons.svg#icon-heart${isLiked ? '':'-outlined'}"></use>
                 </svg>
             </button>
         </div>

@@ -84,15 +84,14 @@ import { elements, renderLoader, clearLoader} from './views/base';
  */
 const state ={};
 
-//test
-window.state = state;
+
+
 
 //    SEARCH CONTROLLER
 
 const controlSearch = async() =>{
     //get query from the view
     const query= searchView.getInput();
-    console.log(query);
     if (query) {
         // 2 new search object and add to state
         state.search = new Search(query);
@@ -227,7 +226,7 @@ const controlLike = () => {
         ///toggle like button
         likesView.toggleLikeBtn(true)
         //add recipe to the ui list
-        console.log(state.likes);
+        likesView.renderLike(newLike);
 
     //user has yet liked current recipe
     } else {
@@ -237,11 +236,23 @@ const controlLike = () => {
         likesView.toggleLikeBtn(false)
 
         //remove recipe to the ui list
-        console.log(state.likes);
-
+        likesView.deleteLike(currentID);
     }
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
 };
 
+//restore liked recipe from localstorage
+
+window.addEventListener('load', ()=>{
+    //create new likes object
+    state.likes = new Likes ();
+    //restore likes
+    state.likes.readStorage();
+    //toggle like menu
+    likesView.toggleLikeMenu(state.likes.getNumLikes());
+    //render exhisting likes
+    state.likes.likes.forEach(like => likesView.renderLike(like) )
+})
 
 // handling recipe button increase decrease
 elements.recipe.addEventListener('click', e =>{
@@ -263,5 +274,3 @@ elements.recipe.addEventListener('click', e =>{
 
     }
 });
-
-window.l = new List();
